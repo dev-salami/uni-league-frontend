@@ -326,10 +326,32 @@
 // 		</main>
 // 	);
 // }
+import { getTweetIdFromUrl } from "@/utils";
 import React from "react";
+import { Tweet } from "react-tweet";
 
 function page() {
-	return <div>Hello</div>;
+	// const tweetUrl =
+	// 	"https://twitter.com/unilorinleague/status/1704849101324451843?t=7328nn862cn84c972nn4xm&s=19";
+	// const tweetId = getTweetIdFromUrl(tweetUrl);
+
+	// if (tweetId) {
+	// 	console.log("Tweet ID:", tweetId);
+	// } else {
+	// 	console.log("Invalid tweet URL.");
+	// }
+	return (
+		<div
+			data-theme="dark"
+			className="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+			<Tweet id="1704849101324451843" />
+			<Tweet id="1704886027016405339" />
+			<Tweet id="1704849101324451843" />
+			<Tweet id="1704886027016405339" />
+			<Tweet id="1704849101324451843" />
+			<Tweet id="1704886027016405339" />
+		</div>
+	);
 }
 
 export default page;
