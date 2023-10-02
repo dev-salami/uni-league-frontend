@@ -1,11 +1,17 @@
 import React from "react";
-import { results, generateLeagueTable } from "@/utils";
+import { results, generateLeagueTable, teamToLogo } from "@/utils";
+import axios from "axios";
+import Image from "next/image";
+import Table from "@/components/Table";
 
-function page() {
+async function page() {
+	const url = "https://uni-league.onrender.com/api/v1/stat/tables?season=6";
 	const table = generateLeagueTable(results);
+	const { data } = await axios.get(url);
+
 	return (
 		<div>
-			<main className="flex justify-center items-center text-center sm:text-base text-xs">
+			<main className="flex justify-center pt-8 sm:text-base text-xs">
 				<table className="border border-gray-300 border-collapse">
 					<thead>
 						<tr className="font-semibold ">
@@ -19,35 +25,11 @@ function page() {
 							<th className="border  py-1 px-2">GA</th>
 						</tr>
 					</thead>
-					{table.map((team) => (
-						<tbody
-							key={team.name}
-							className="text-sm">
-							<tr>
-								<td className="border border-gray-300 py-1 px-2">
-									{team.name}
-								</td>
-								<td className="border border-gray-300 py-1 px-2">
-									{team.played}
-								</td>
-								<td className="border border-gray-300 py-1 px-2">
-									{team.points}
-								</td>
-								<td className="border border-gray-300 py-1 px-2">{team.won}</td>
-								<td className="border border-gray-300 py-1 px-2">
-									{team.drawn}
-								</td>
-								<td className="border border-gray-300 py-1 px-2">
-									{team.lost}
-								</td>
-								<td className="border border-gray-300 py-1 px-2">
-									{team.goalsFor}
-								</td>
-								<td className="border border-gray-300 py-1 px-2">
-									{team.goalsAgainst}
-								</td>
-							</tr>
-						</tbody>
+					{data.map((team, index) => (
+						<Table
+							key={index}
+							team={team}
+						/>
 					))}
 				</table>
 			</main>
