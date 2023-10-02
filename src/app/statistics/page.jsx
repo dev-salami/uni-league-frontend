@@ -1,44 +1,20 @@
-import { getTopScorersAndAssisters } from "@/utils";
+import Assist from "@/components/Assist";
+import Scorer from "@/components/Scorer";
+import axios from "axios";
 import React from "react";
 
-function page() {
-	const matches = [
-		{
-			homeTeam: "Chelsea",
-			awayTeam: "Arsenal",
-			homeTeamScorer: [
-				["Layi", "Bunmi"],
-				["Bello", "Layi"],
-			],
-			awayTeamScorer: [["David", "Lamine"]],
-			venue: "Old Trafford",
-			time: "18.00",
-			date: "2023-09-29",
-			matchday: 4,
-			homeTeamScore: 2,
-			awayTeamScore: 1,
-		},
-		{
-			homeTeam: "Arsenal",
-			awayTeam: "Chelsea",
-			homeTeamScorer: [
-				["Layi", "Bunmi"],
-				["Layi", "Kunle"],
-			],
-			awayTeamScorer: [["David", "Lamine"]],
-			venue: "Old Trafford",
-			time: "18.00",
-			date: "2023-09-29",
-			matchday: 4,
-			homeTeamScore: 2,
-			awayTeamScore: 1,
-		},
-	];
-	const { topGoalScorers, topAssisters } = getTopScorersAndAssisters(matches);
+async function page() {
+	const url =
+		"https://uni-league.onrender.com/api/v1/stat/top-scorer-assist?season=6";
 
-	console.log("Top Goal Scorers:", topGoalScorers);
-	console.log("Top Assisters:", topAssisters);
-	return <div>page</div>;
+	const { data } = await axios.get(url);
+
+	return (
+		<section className="container mx-auto px-4 mt-8 flex flex-col gap-6 ">
+			<Scorer topGoalScorers={data.topGoalScorers} />
+			<Assist topAssisters={data.topAssisters} />
+		</section>
+	);
 }
 
 export default page;
