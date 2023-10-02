@@ -14,7 +14,7 @@ function Navbar() {
 
 	const handleClick = () => setOpen(!Open);
 	const tabs = [
-		{ link: "/", name: "HOME" },
+		{ link: "/", name: "Home" },
 		{ link: "/fixtures", name: "Fixtures" },
 		{ link: "/results", name: "Results" },
 		{ link: "/tables", name: "Tables" },
@@ -49,14 +49,6 @@ function Navbar() {
 							<span className="relative z-10">{item.name}</span>
 						</Link>
 					))}
-
-					<button className="  font-bold  transition  ease-in-out duration-700   px-2 py-0.5 ">
-						LOGOUT
-					</button>
-
-					<button className="transition ease-in-out duration-700  relative px-3 py-1 ">
-						LOGIN
-					</button>
 				</div>
 				<div className="flex gap-6 h-fit ">
 					<button
@@ -74,12 +66,12 @@ function Navbar() {
 					onClick={() => setOpen(false)}
 					className={` duration-500 md:hidden ${
 						Open
-							? "bg-black/60 fixed !top-0 z-[1000] inset-0 opacity-100"
+							? "bg-[#141625]/80 fixed !top-0 z-[1000] inset-0 opacity-100"
 							: "opacity-0"
 					}`}></div>
 				<div className="md:hidden ">
 					<div
-						className={`z-[1000] duration-1000 p-10 bg-black    fixed top-0 left-0 right-1/3 bottom-0 ${
+						className={`z-[1000] duration-1000 p-10 bg-[#141625]    fixed top-0 left-0 right-1/3 bottom-0 ${
 							Open ? " " : "  -translate-x-full "
 						}`}>
 						<div className="flex flex-col justify-evenly h-full items-center text-lg gap-6 text-gray-500 font-semibold leading-tight ">
@@ -94,14 +86,6 @@ function Navbar() {
 									{item.name}
 								</Link>
 							))}
-
-							<button className="  font-bold  transition  ease-in-out duration-700   px-2 py-0.5 ">
-								LOGOUT
-							</button>
-
-							<button className="transition ease-in-out duration-700  relative px-3 py-1 ">
-								LOGIN
-							</button>
 						</div>
 					</div>
 				</div>

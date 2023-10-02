@@ -16,6 +16,8 @@ function Result({ matches }) {
 	const [detailOpen, setdetailOpen] = useState("");
 	const [Matchday, setMatchday] = useState(4);
 	const [error, seterror] = useState(false);
+	const [Season, setSeason] = useState(6);
+
 	const [loadingplus, setloadingplus] = useState(false);
 	const [loadingminus, setloadingminus] = useState(false);
 
@@ -23,12 +25,18 @@ function Result({ matches }) {
 
 	const getResultBySeasonMatchday = (season, value, button) => {
 		const newMatchday = Matchday + value;
-		if (Matchday > 1 || Matchday < 12) {
+		let selectedSeason;
+		if (button === "season") {
+			selectedSeason = +season;
+		} else {
+			selectedSeason = Season;
+		}
+		if (newMatchday >= 1 && newMatchday <= 11) {
 			button === "minus" && setloadingminus(true);
 			button === "plus" && setloadingplus(true);
 			axios
 				.get(
-					`http://localhost:5000/api/v1/results/get-season-matchday?season=${+season}&matchday=${newMatchday}`
+					`http://localhost:5000/api/v1/results/get-season-matchday?season=${selectedSeason}&matchday=${newMatchday}`
 				)
 				.then((res) => {
 					setselectedMatchday(res.data);
@@ -64,9 +72,10 @@ function Result({ matches }) {
 				<select
 					defaultValue="6"
 					className="rounded-t-md px-2 py-1 bg-gray-200/80 text-[#141625] mx-3 text-sm"
-					onChange={(e) =>
-						getResultBySeasonMatchday(e.target.value, 0, "season")
-					}
+					onChange={(e) => {
+						setSeason(+e.target.value);
+						getResultBySeasonMatchday(e.target.value, 0, "season");
+					}}
 					name="season"
 					id="season">
 					<option value="1">2017/2018</option>

@@ -34,15 +34,19 @@ function Fixtures({ matches }) {
 
 	const getResultBySeasonMatchday = (season, value, button) => {
 		const newMatchday = Matchday + value;
-		// setSeason(season)
-		// let selectedSeason;
+		let selectedSeason;
 		// selectedSeason = button === "season" ? +season : Season;
-		if (Matchday > 1 || Matchday < 12) {
+		if (button === "season") {
+			selectedSeason = +season;
+		} else {
+			selectedSeason = Season;
+		}
+		if (newMatchday >= 1 && newMatchday <= 11) {
 			button === "minus" && setloadingminus(true);
 			button === "plus" && setloadingplus(true);
 			axios
 				.get(
-					`http://localhost:5000/api/v1/fixtures/get-season-matchday?season=${season}&matchday=${newMatchday}`
+					`http://localhost:5000/api/v1/fixtures/get-season-matchday?season=${selectedSeason}&matchday=${newMatchday}`
 				)
 				.then((res) => {
 					setselectedMatchday(res.data);
@@ -79,9 +83,10 @@ function Fixtures({ matches }) {
 				<select
 					defaultValue="6"
 					className="rounded-t-md px-2 py-1 bg-gray-200/80 text-[#141625] mx-3 text-sm"
-					onChange={(e) =>
-						getResultBySeasonMatchday(e.target.value, 0, "season")
-					}
+					onChange={(e) => {
+						setSeason(+e.target.value);
+						getResultBySeasonMatchday(e.target.value, 0, "season");
+					}}
 					name="season"
 					id="season">
 					<option value="1">2017/2018</option>
