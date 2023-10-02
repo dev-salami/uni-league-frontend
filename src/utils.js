@@ -196,6 +196,30 @@ export const sortMatchesByDateTime = (matches) => {
 	return matches;
 };
 
+export function getTweetIdFromUrl(url) {
+	// Define a regular expression pattern to match tweet URLs
+	const pattern = /twitter\.com\/[^/]+\/status\/(\d+)/;
+
+	const match = pattern.exec(url);
+
+	if (match && match[1]) {
+		return match[1];
+	} else {
+		return null;
+	}
+}
+
+// Example usage:
+const tweetUrl =
+	"https://twitter.com/unilorinleague/status/1704849101324451843";
+const tweetId = getTweetIdFromUrl(tweetUrl);
+
+if (tweetId) {
+	console.log("Tweet ID:", tweetId);
+} else {
+	console.log("Invalid tweet URL.");
+}
+
 export const isDateInPast = (dateString) => {
 	const inputDate = new Date(dateString);
 
