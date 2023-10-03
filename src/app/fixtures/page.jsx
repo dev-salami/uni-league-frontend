@@ -15,7 +15,6 @@ async function Page() {
 	return (
 		<div className="container mx-auto px-4">
 			<Fixtures matches={data} />
-			<CreateFixtures />
 		</div>
 	);
 }
