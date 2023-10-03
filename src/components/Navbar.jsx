@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import logo from "../../public/assets/uifllogo.jpg";
 import Image from "next/image";
@@ -20,7 +20,8 @@ function Navbar() {
 		{ link: "/tables", name: "Tables" },
 		{ link: "/transfers", name: "Transfers" },
 	];
-	const isActive = (pathname) => router.pathname === pathname;
+	const pathname = usePathname();
+	const isActive = (path) => pathname === path;
 
 	return (
 		<section className="h-full w-full   z-50 ">
@@ -49,6 +50,21 @@ function Navbar() {
 							<span className="relative z-10">{item.name}</span>
 						</Link>
 					))}
+					<Link
+						href="/dashboard"
+						className="transition ease-in-out duration-700  relative px-3 py-1 
+								
+							">
+						{isActive("/dashboard") && (
+							<motion.div
+								transition={{ duration: 0.5 }}
+								style={{ borderRadius: 9999 }}
+								layoutId="active-pill"
+								className=" bg-[#d87d4a] absolute inset-0"
+							/>
+						)}
+						<span className="relative z-10">Dashboard</span>
+					</Link>
 				</div>
 				<div className="flex gap-6 h-fit ">
 					<button
@@ -64,14 +80,14 @@ function Navbar() {
 			<aside>
 				<div
 					onClick={() => setOpen(false)}
-					className={` duration-500 md:hidden ${
+					className={` duration-500 md:hidden  ${
 						Open
-							? "bg-[#141625]/80 fixed !top-0 z-[1000] inset-0 opacity-100"
+							? "bg-[#141625]/80 fixed !top-0 z-[800] inset-0 opacity-100"
 							: "opacity-0"
 					}`}></div>
-				<div className="md:hidden ">
+				<div className="md:hidden  ">
 					<div
-						className={`z-[1000] duration-1000 p-10 bg-[#141625]    fixed top-0 left-0 right-1/3 bottom-0 ${
+						className={`z-[1000] duration-1000 p-10 bg-[#141625] border-r    fixed top-0 left-0 right-1/3 bottom-0 ${
 							Open ? " " : "  -translate-x-full "
 						}`}>
 						<div className="flex flex-col justify-evenly h-full items-center text-lg gap-6 text-gray-500 font-semibold leading-tight ">
