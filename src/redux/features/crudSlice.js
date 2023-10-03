@@ -13,7 +13,7 @@ const crudSlice = createSlice({
 	reducers: {
 		addFixtures: (state, { payload }) => {
 			state.tempFixtures = state.tempFixtures.filter(
-				(team) => team.id !== payload.id
+				(team) => team.identifier !== payload.identifier
 				// && team.Team1B === payload.Team1B
 			);
 

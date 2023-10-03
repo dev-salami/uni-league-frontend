@@ -196,15 +196,31 @@ export const sortMatchesByDateTime = (matches) => {
 	return matches;
 };
 
-export function getTweetIdFromUrl(url) {
-	// Define a regular expression pattern to match tweet URLs
-	const pattern = /twitter\.com\/[^/]+\/status\/(\d+)/;
+// export function getTweetIdFromUrl(url) {
+// 	// Define a regular expression pattern to match tweet URLs
+// 	const pattern = /twitter\.com\/[^/]+\/status\/(\d+)/;
 
+// 	const match = pattern.exec(url);
+
+// 	if (match && match[1]) {
+// 		return match[1];
+// 	} else {
+// 		return null;
+// 	}
+// }
+export function getTweetIdFromUrl(url) {
+	// Define a regular expression pattern to match tweet URLs with optional query parameters
+	const pattern = /\/status\/(\d+)(?:\?s=\d+)?$/;
+
+	// Use the RegExp `exec` method to find matches in the URL
 	const match = pattern.exec(url);
 
+	// Check if a match was found
 	if (match && match[1]) {
+		// Extract and return the tweet ID
 		return match[1];
 	} else {
+		// If no match was found, return null or handle the error accordingly
 		return null;
 	}
 }
