@@ -12,7 +12,7 @@ function classNames(...classes) {
 	return classes.filter(Boolean).join(" ");
 }
 
-export const SingleFixtures = ({ count, matchday }) => {
+export const SingleFixtures = ({ count, matchday, season }) => {
 	const dispatch = useDispatch();
 
 	const [Team1B, setTeam1B] = useState(teams[0]);
@@ -44,7 +44,7 @@ export const SingleFixtures = ({ count, matchday }) => {
 		) {
 			dispatch(
 				addFixtures({
-					// id: id,
+					identifier: id,
 					homeTeam: Team1A.name,
 					awayTeam: Team1B.name,
 
@@ -52,7 +52,7 @@ export const SingleFixtures = ({ count, matchday }) => {
 					time: Time,
 					date: Date,
 					matchday: matchday,
-					season: 4,
+					season: season,
 				})
 			);
 		}
