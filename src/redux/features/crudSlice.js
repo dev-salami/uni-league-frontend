@@ -21,7 +21,11 @@ const crudSlice = createSlice({
 			console.log(state.tempFixtures);
 			// console.log(state.test);
 		},
+		deleteFixtures: (state, { payload }) => {
+			state.tempFixtures = [];
+			console.log("Yeah");
+		},
 	},
 });
-export const { addFixtures } = crudSlice.actions;
+export const { addFixtures, deleteFixtures } = crudSlice.actions;
 export default crudSlice.reducer;
