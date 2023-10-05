@@ -2,22 +2,22 @@
 import CreateFixtures from "@/components/CreateFixtures";
 import EditResult from "@/components/EditResult";
 import Post from "@/components/Post";
-import Lenis from "@studio-freight/lenis";
+// import Lenis from "@studio-freight/lenis";
 import { motion } from "framer-motion";
 import { useSearchParams, useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 function Dashboard() {
-	const lenis = new Lenis();
-	lenis.on("scroll", (e) => {
-		console.log(e);
-	});
-	function raf(time) {
-		lenis.raf(time);
-		requestAnimationFrame(raf);
-	}
+	// const lenis = new Lenis();
+	// lenis.on("scroll", (e) => {
+	// 	console.log(e);
+	// });
+	// function raf(time) {
+	// 	lenis.raf(time);
+	// 	requestAnimationFrame(raf);
+	// }
 
-	requestAnimationFrame(raf);
+	// requestAnimationFrame(raf);
 	const searchParams = useSearchParams();
 	const router = useRouter();
 	const [Tab, setTab] = useState("TwitterPost");
