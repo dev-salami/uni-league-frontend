@@ -3,6 +3,8 @@ import "./globals.css";
 import { Montserrat } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Toaster } from "sonner";
+import Lenis from "@studio-freight/lenis";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -19,6 +21,10 @@ export default function RootLayout({ children }) {
 		<html lang="en">
 			<body className={montserrat.className}>
 				<Navbar />
+				<Toaster
+					position="top-center"
+					richColors
+				/>
 				<ReduxProvider>{children}</ReduxProvider>
 				{/* <Footer /> */}
 			</body>
