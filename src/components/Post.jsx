@@ -2,6 +2,7 @@
 import { getTweetIdFromUrl } from "@/utils";
 import axios from "axios";
 import React, { useState } from "react";
+import { toast } from "sonner";
 
 function Post() {
 	const [Link, setLink] = useState("");
@@ -10,33 +11,22 @@ function Post() {
 	const createPost = () => {
 		console.log(getTweetIdFromUrl(Link));
 		if (!Link) {
-			setStatus("empty");
-			setTimeout(() => {
-				setStatus("");
-			}, 4000);
+			toast.error("Field cannot be empty");
 		} else if (Link && getTweetIdFromUrl(Link)) {
+			toast.loading("Loading...");
 			axios
 				.post("https://uni-league.onrender.com/api/v1/post", {
 					id: getTweetIdFromUrl(Link),
 				})
 				.then((res) => {
 					console.log(res);
-					setStatus("good");
-					setTimeout(() => {
-						setStatus("");
-					}, 4000);
+					toast.success("Link Saved");
 				})
 				.catch((err) => {
-					setStatus("error");
-					setTimeout(() => {
-						setStatus("");
-					}, 4000);
+					toast.error("An error occured");
 				});
 		} else {
-			setStatus("bad");
-			setTimeout(() => {
-				setStatus("");
-			}, 4000);
+			toast.error("Invalid Link");
 		}
 	};
 	return (
@@ -45,11 +35,6 @@ function Post() {
 				<div className="flex justify-center mx-auto max-w-md items-center ">
 					<div className="w-full px-3 mb-2">
 						<div className="flex pl-2 items-center gap-8 ">
-							{/* <label
-								className=" h-fit uppercase tracking-wide text-gray-200 text-xs font-bold"
-								htmlFor="url">
-								Twitter Link
-							</label> */}
 							{Status === "bad" && (
 								<p className="text-red-600 font-semibold p-2">Invalid Link</p>
 							)}
