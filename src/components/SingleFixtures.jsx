@@ -40,7 +40,9 @@ export const SingleFixtures = ({ count, matchday, season }) => {
 			Time &&
 			Team1B.id !== 0 &&
 			Team1A.id !== 0 &&
-			Venue.id !== 0
+			Venue.id !== 0 &&
+			season &&
+			matchday
 		) {
 			dispatch(
 				addFixtures({
@@ -56,7 +58,7 @@ export const SingleFixtures = ({ count, matchday, season }) => {
 				})
 			);
 		}
-	}, [Team1B, Team1A, Venue, Date, Time]);
+	}, [Team1B, Team1A, Venue, Date, Time, season, matchday]);
 
 	return (
 		<section className="border rounded-md border-gray-400 p-4 mt-4 w-fit mx-auto">
@@ -240,6 +242,7 @@ export const SingleFixtures = ({ count, matchday, season }) => {
 							onChange={(e) => setDate(e.target.value)}
 							type="date"
 							name="data"
+							placeholder="select date"
 							id=""
 						/>
 						<input

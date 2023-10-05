@@ -17,10 +17,20 @@ import Image from "next/image";
 import axios from "axios";
 import Link from "next/link";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import Lenis from "@studio-freight/lenis";
+import { toast } from "sonner";
 
 function Fixtures({ matches }) {
-	// const Matches = sortMatchesByDateTime(matches);
-	// const sortedMatches = separateMatchesByDate([...matches]);
+	// const lenis = new Lenis();
+	// lenis.on("scroll", (e) => {
+	// 	console.log(e);
+	// });
+	// function raf(time) {
+	// 	lenis.raf(time);
+	// 	requestAnimationFrame(raf);
+	// }
+
+	// requestAnimationFrame(raf);
 
 	const [detailOpen, setdetailOpen] = useState("");
 	const [Matchday, setMatchday] = useState(4);
@@ -46,7 +56,7 @@ function Fixtures({ matches }) {
 			button === "plus" && setloadingplus(true);
 			axios
 				.get(
-					`http://localhost:5000/api/v1/fixtures/get-season-matchday?season=${selectedSeason}&matchday=${newMatchday}`
+					`https://uni-league.onrender.com/api/v1/fixtures/get-season-matchday?season=${selectedSeason}&matchday=${newMatchday}`
 				)
 				.then((res) => {
 					setselectedMatchday(res.data);
@@ -86,6 +96,7 @@ function Fixtures({ matches }) {
 					onChange={(e) => {
 						setSeason(+e.target.value);
 						getResultBySeasonMatchday(e.target.value, 0, "season");
+						toast.loading("Loading");
 					}}
 					name="season"
 					id="season">
