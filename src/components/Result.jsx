@@ -36,7 +36,7 @@ function Result({ matches }) {
 			button === "plus" && setloadingplus(true);
 			axios
 				.get(
-					`http://localhost:5000/api/v1/results/get-season-matchday?season=${selectedSeason}&matchday=${newMatchday}`
+					`https://uni-league.onrender.com/api/v1/results/get-season-matchday?season=${selectedSeason}&matchday=${newMatchday}`
 				)
 				.then((res) => {
 					setselectedMatchday(res.data);

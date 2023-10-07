@@ -183,11 +183,12 @@ function Fixtures({ matches }) {
 																index + match.awayTeam + match.homeTeam
 														  )
 												}
-												className="flex rounded-xl border items-center  justify-center gap-1 font-semibold w-1/5">
+												className="flex rounded-xl border items-center text-xs  justify-center gap-1 font-semibold w-1/5">
 												<span>{match.time}</span>
 												<span> v </span>
 											</div>
 											<div className="flex  flex-row-reverse w-2/5 justify-end gap-2 text-sm">
+												{match?.played === true && <span>PLAYED</span>}
 												<span>{match.awayTeam}</span>
 												{teamToLogo(match.awayTeam) ? (
 													<Image

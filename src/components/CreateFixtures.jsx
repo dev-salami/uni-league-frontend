@@ -15,7 +15,7 @@ function CreateFixtures() {
 
 	const createFixtures = () => {
 		toast.loading("Loading");
-		if (tempFixtures.length === 6) {
+		if (tempFixtures.length === 1) {
 			axios
 				.post("https://uni-league.onrender.com/api/v1/fixtures", tempFixtures)
 				.then((res) => {
