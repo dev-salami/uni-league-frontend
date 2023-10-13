@@ -31,8 +31,8 @@ function Dashboard() {
 
 	const tabs = [
 		{ link: "createFixtures", name: "Create Fixtures" },
-		{ link: "editResult", name: "Edit Result" },
-		{ link: "twitterPost", name: "TwitterPost" },
+		{ link: "editResult", name: "Add Result" },
+		{ link: "twitterPost", name: "Twitter Post" },
 	];
 
 	const isActive = (name) => searchParams.get("tab") === name;
