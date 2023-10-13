@@ -81,11 +81,11 @@ function EditResult() {
 						id="season">
 						<option value={null}>Select Season</option>
 
-						<option value="1">2017/2018</option>
+						{/* <option value="1">2017/2018</option>
 						<option value="2">2018/2019</option>
 						<option value="3">2019/2020</option>
 						<option value="4">2020/2021</option>
-						<option value="5">2021/2022</option>
+						<option value="5">2021/2022</option> */}
 						<option value="6">2022/2023</option>
 					</select>
 					<select
@@ -131,9 +131,6 @@ function EditResult() {
 											<hr className="border-t-2 " />
 
 											<p className="text-center font-semibold py-2 bg-gray-500/40">
-												{/* {sortedMatches[index].map((match, index) => (
-										<p key={index}>{match.date}</p>
-									))} */}
 												{formatDate(sortedMatches[index][0].date)}
 											</p>
 											<hr className="border-t-2 " />
@@ -158,42 +155,8 @@ function EditResult() {
 																</span>
 															)}
 														</div>
-
-														{/* <div>
-														{match.homeTeamScorer?.map((scorer, index) => (
-															<div
-																className="flex gap-4 text-xs mt-2"
-																key={index}>
-																{scorer[0] && (
-																	<span className="flex gap-2 items-center">
-																		<IoIosFootball />
-																		{scorer[0]}
-																	</span>
-																)}
-																{scorer[1] && (
-																	<span className="flex gap-2 items-center">
-																		<GiRunningShoe />
-																		{scorer[1]}
-																	</span>
-																)}
-															</div>
-														))}
-													</div> */}
 													</div>
-													{/* <div
-														onClick={() =>
-															detailOpen ==
-															index + match.awayTeam + match.homeTeam
-																? setdetailOpen(100)
-																: setdetailOpen(
-																		index + match.awayTeam + match.homeTeam
-																  )
-														}
-														className="flex rounded-xl border h-fit justify-center gap-1 font-semibold w-1/5">
-														<span>{match.homeTeamScore}</span>
-														<span> - </span>
-														<span>{match.awayTeamScore}</span>
-													</div> */}
+
 													{match?.played === true ? (
 														<FcCheckmark size={25} />
 													) : (

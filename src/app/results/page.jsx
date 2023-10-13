@@ -7,7 +7,6 @@ async function Results() {
 	const Season = 6;
 	const Matchday = 4;
 
-	// const Matches = sortMatchesByDateTime(matches);
 	const seasonMatchdayUrl = `https://uni-league.onrender.com/api/v1/results/get-season-matchday?season=${Season}&matchday=${Matchday}`;
 
 	const { data } = await axios.get(seasonMatchdayUrl);

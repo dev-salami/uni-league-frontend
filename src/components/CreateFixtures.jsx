@@ -49,11 +49,11 @@ function CreateFixtures() {
 					id="season">
 					<option value="">Select Season</option>
 
-					<option value="1">2017/2018</option>
+					{/* <option value="1">2017/2018</option>
 					<option value="2">2018/2019</option>
 					<option value="3">2019/2020</option>
 					<option value="4">2020/2021</option>
-					<option value="5">2021/2022</option>
+					<option value="5">2021/2022</option> */}
 					<option value="6">2022/2023</option>
 				</select>
 				<select
