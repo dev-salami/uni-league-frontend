@@ -8,49 +8,47 @@ import logo from "../../public/assets/uifllogo.jpg";
 import Image from "next/image";
 
 function Navbar() {
-	const router = useRouter();
+  const router = useRouter();
 
-	const [Open, setOpen] = useState(false);
+  const [Open, setOpen] = useState(false);
 
-	const handleClick = () => setOpen(!Open);
-	const tabs = [
-		{ link: "/", name: "Home" },
-		{ link: "/fixtures", name: "Fixtures" },
-		{ link: "/results", name: "Results" },
-		{ link: "/tables", name: "Tables" },
-		{ link: "/transfers", name: "Transfers" },
-	];
-	const pathname = usePathname();
-	const isActive = (path) => pathname === path;
+  const handleClick = () => setOpen(!Open);
+  const tabs = [
+    { link: "/", name: "Home" },
+    { link: "/fixtures", name: "Fixtures" },
+    { link: "/results", name: "Results" },
+    { link: "/tables", name: "Tables" },
+    { link: "/transfers", name: "Transfers" },
+  ];
+  const pathname = usePathname();
+  const isActive = (path) => pathname === path;
 
-	return (
-		<section className="h-full w-full   z-50 ">
-			<main className="text-white items-center     w-full  py-8 px-8 md:px-4 h-[60px]  flex flex-row justify-between border-b-[1px]  ">
-				<Image
-					alt="logo"
-					src={logo}
-					className="h-10 w-10 rounded-full"></Image>
+  return (
+    <section className="h-full w-full   z-50  ">
+      <main className="text-white items-center     w-full  py-8 px-8 md:px-4 h-[60px]  flex flex-row justify-between border-b-[1px]  ">
+        <Image alt="logo" src={logo} className="h-10 w-10 rounded-full"></Image>
 
-				<div className="items-center  text-sm mt-3 md:flex flex-row font-semibold space-x-4 hidden">
-					{tabs.map((item, index) => (
-						<Link
-							key={item.name}
-							href={item.link}
-							className="transition ease-in-out duration-700  relative px-3 py-1 
+        <div className="items-center  text-sm mt-3 md:flex flex-row font-semibold space-x-4 hidden">
+          {tabs.map((item, index) => (
+            <Link
+              key={item.name}
+              href={item.link}
+              className="transition ease-in-out duration-700  relative px-3 py-1 
 								
-							">
-							{isActive(item.link) && (
-								<motion.div
-									transition={{ duration: 0.5 }}
-									style={{ borderRadius: 9999 }}
-									layoutId="active-pill"
-									className=" bg-[#d87d4a] absolute inset-0"
-								/>
-							)}
-							<span className="relative z-10">{item.name}</span>
-						</Link>
-					))}
-					<Link
+							"
+            >
+              {isActive(item.link) && (
+                <motion.div
+                  transition={{ duration: 0.5 }}
+                  style={{ borderRadius: 9999 }}
+                  layoutId="active-pill"
+                  className=" bg-[#d87d4a] absolute inset-0"
+                />
+              )}
+              <span className="relative z-10">{item.name}</span>
+            </Link>
+          ))}
+          {/* <Link
 						href="/dashboard"
 						className="transition ease-in-out duration-700  relative px-3 py-1 
 								
@@ -64,49 +62,53 @@ function Navbar() {
 							/>
 						)}
 						<span className="relative z-10">Dashboard</span>
-					</Link>
-				</div>
-				<div className="flex gap-6 h-fit ">
-					<button
-						onClick={handleClick}
-						className="bg-orange md:hidden focus:outline-none hover:text-[#d87d4a] transition ease-in-out duration-700 flex items-center  z-[999]">
-						<span className="w-8 h-8   ">
-							{!Open ? <FaBars size={30} /> : <FaTimes size={30} />}
-						</span>
-					</button>
-				</div>
-			</main>
+					</Link> */}
+        </div>
+        <div className="flex gap-6 h-fit ">
+          <button
+            onClick={handleClick}
+            className="bg-orange md:hidden focus:outline-none hover:text-[#d87d4a] transition ease-in-out duration-700 flex items-center  z-[999]"
+          >
+            <span className="w-8 h-8   ">
+              {!Open ? <FaBars size={30} /> : <FaTimes size={30} />}
+            </span>
+          </button>
+        </div>
+      </main>
 
-			<aside>
-				<div
-					onClick={() => setOpen(false)}
-					className={` duration-500 md:hidden  ${
-						Open
-							? "bg-[#141625]/80 fixed !top-0 z-[800] inset-0 opacity-100"
-							: "opacity-0"
-					}`}></div>
-				<div className="md:hidden  ">
-					<div
-						className={`z-[1000] duration-1000 p-10 bg-[#141625] border-r    fixed top-0 left-0 right-1/3 bottom-0 ${
-							Open ? " " : "  -translate-x-full "
-						}`}>
-						<div className="flex flex-col justify-evenly h-full items-center text-lg gap-6 text-gray-500 font-semibold leading-tight ">
-							{tabs.map((item, index) => (
-								<Link
-									onClick={() => setOpen(false)}
-									key={item.name}
-									href={item.link}
-									className={`transition ease-in-out duration-700   px-3 py-1 ${
-										isActive(item.link) ? "bg-[#d87d4a] text-white" : ""
-									}`}>
-									{item.name}
-								</Link>
-							))}
-						</div>
-					</div>
-				</div>
-			</aside>
-		</section>
-	);
+      <aside>
+        <div
+          onClick={() => setOpen(false)}
+          className={` duration-500 md:hidden  ${
+            Open
+              ? "bg-[#141625]/80 fixed !top-0 z-[800] inset-0 opacity-100"
+              : "opacity-0"
+          }`}
+        ></div>
+        <div className="md:hidden  ">
+          <div
+            className={`z-[1000] duration-1000 p-10 bg-[#141625] border-r    fixed top-0 left-0 right-1/3 bottom-0 ${
+              Open ? " " : "  -translate-x-full "
+            }`}
+          >
+            <div className="flex flex-col justify-evenly h-full items-center text-lg gap-6 text-gray-500 font-semibold leading-tight ">
+              {tabs.map((item, index) => (
+                <Link
+                  onClick={() => setOpen(false)}
+                  key={item.name}
+                  href={item.link}
+                  className={`transition ease-in-out duration-700   px-3 py-1 ${
+                    isActive(item.link) ? "bg-[#d87d4a] text-white" : ""
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+  );
 }
 export default Navbar;
